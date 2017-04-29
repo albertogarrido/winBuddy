@@ -63,7 +63,7 @@ static void *isActive = &isActive;
             
             [Defaults registerDefaults:@{ PrefKey(@"HideMenubar"): @NO }];
             [Defaults registerDefaults:@{ PrefKey(@"HideShadow"): @YES }];
-            [Defaults registerDefaults:@{ PrefKey(@"ShowBorder"): @NO }];
+            [Defaults registerDefaults:@{ PrefKey(@"ShowBorder"): @YES }];
 
             [plugin setMenu];
             [plugin _updateMenubarState];
@@ -256,7 +256,7 @@ static void *isActive = &isActive;
 
 - (void)mf_updateBorder {
     NSWindow *borderWin = objc_getAssociatedObject(self, borderKey);
-    [borderWin.contentView setBorderColor:self.isKeyWindow ? [NSColor redColor] : [NSColor blackColor]];
+    [borderWin.contentView setBorderColor:self.isKeyWindow ? [NSColor darkGrayColor] : [NSColor lightGrayColor]];
     [borderWin setFrame:self.frame display:YES];
     if (![ReadPref(@"ShowBorder") boolValue])
             [borderWin.contentView setBorderColor:[NSColor clearColor]];
